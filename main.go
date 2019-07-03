@@ -21,7 +21,7 @@ func main() {
 
 	switch flag.Arg(0) {
 	case "adhan:next":
-		adhan, err := adhan.Next(time.Now(), "Dhaka", "Bangladesh", aladhan.UniversityOfIslamicSciencesKarachi)
+		adhan, err := adhan.Next(time.Now(), cfg.Current.Adhan.City, cfg.Current.Adhan.Country, aladhan.Methods[cfg.Current.Adhan.Method])
 		if err != nil {
 			log.Fatalf("adhan: failed to get next: %s", err)
 		}
