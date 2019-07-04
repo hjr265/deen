@@ -39,7 +39,7 @@ func (s Adhans) GetNext(method aladhan.Method, country, city string, when time.T
 			if err != nil {
 				return err
 			}
-			if adhan.When.Format("2006-01-02") == when.Format("2006-01-02") {
+			if adhan.When.Format("2006-01-02") == when.Format("2006-01-02") || adhan.When.Format("2006-01-02") == when.AddDate(0, 0, 1).Format("2006-01-02") {
 				r = &adhan
 				break
 			}

@@ -15,31 +15,26 @@ func Next(when time.Time, city, country string, method aladhan.Method) (*model.A
 		return nil, err
 	}
 
-	for i := 0; i < 2; i++ {
-		adhan, err := adhans.GetNext(method, country, city, when)
-		if err != nil {
-			return nil, err
-		}
-
-		if adhan == nil {
-			log.Println("Downloading adhan timings")
-
-			err := syncTimings(adhans, when, city, country, method)
-			if err != nil {
-				return nil, err
-			}
-			err = syncTimings(adhans, when.AddDate(0, 0, 1), city, country, method)
-			if err != nil {
-				return nil, err
-			}
-
-			continue
-		}
-
+	adhan, err := adhans.GetNext(method, country, city, when)
+	if err != nil {
+		return nil, err
+	}
+	if adhan != nil {
 		return adhan, nil
 	}
 
-	panic("unreachable")
+	log.Println("Downloading adhan timings")
+
+	err = syncTimings(adhans, when, city, country, method)
+	if err != nil {
+		return nil, err
+	}
+	err = syncTimings(adhans, when.AddDate(0, 0, 1), city, country, method)
+	if err != nil {
+		return nil, err
+	}
+
+	return adhans.GetNext(method, country, city, when)
 }
 
 func syncTimings(adhans *db.Adhans, when time.Time, city, country string, method aladhan.Method) error {
