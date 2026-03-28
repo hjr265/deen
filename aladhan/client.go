@@ -15,7 +15,7 @@ type Timing struct {
 }
 
 func GetTimings(date time.Time, city, country string, method Method) ([]Timing, error) {
-	url := fmt.Sprintf("http://api.aladhan.com/v1/timingsByCity/%s?city=%s&country=%s&method=%d", date.Format("2006-01-02"), city, country, method)
+	url := fmt.Sprintf("https://api.aladhan.com/v1/timingsByCity/%s?city=%s&country=%s&method=%d", date.Format("2006-01-02"), city, country, method)
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
