@@ -34,11 +34,15 @@ Multiple editions can be configured to show each verse in all editions.
 
 ## Configuration
 
-Deen reads its configuration from `~/.config/deen/config.toml`:
+Deen reads its configuration from `~/.config/deen/config.toml`. Use `--config` to specify an alternative path:
+
+```sh
+deen --config /path/to/config.toml adhan:next
+```
 
 ```toml
 [database]
-path = "/home/user/.deendb"
+path = "/home/user/.local/share/deen/deen.db"
 
 [adhan]
 method = 3
@@ -68,6 +72,8 @@ editions = ["en.asad"]
 | 12 | Union Organization Islamic De France |
 | 13 | Diyanet Isleri Baskanligi, Turkey |
 | 14 | Spiritual Administration of Muslims of Russia |
+
+## Data Sources
 
 Prayer times are fetched from the [Aladhan API](https://aladhan.com) and cached locally in a BoltDB database. Quran verses are fetched from the [Al Quran Cloud API](https://alquran.cloud/api). Available editions can be found in the API documentation.
 

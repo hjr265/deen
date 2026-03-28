@@ -16,12 +16,16 @@ import (
 var app *cli.Cli
 
 func main() {
-	err := cfg.Load()
-	if err != nil {
-		log.Fatalf("cfg: failed to load: %s", err)
-	}
-
 	app = cli.App("deen", "Command line companion to get prayer timings, Quran verses, and more")
+
+	configPath := app.StringOpt("config", "", "Path to configuration file")
+
+	app.Before = func() {
+		err := cfg.Load(*configPath)
+		if err != nil {
+			log.Fatalf("cfg: failed to load: %s", err)
+		}
+	}
 
 	app.Command("adhan:next", "Show adhan timing of next prayer", cmdAdhanNext)
 	app.Command("quran:ayah", "Show an ayah of the Quran", cmdQuranAyah)

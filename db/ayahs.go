@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/boltdb/bolt"
-	"github.com/hjr265/deen/cfg"
 	"github.com/hjr265/deen/model"
 )
 
@@ -16,7 +15,7 @@ type Ayahs struct {
 var _ Store = &Ayahs{}
 
 func OpenAyahs() (*Ayahs, error) {
-	db, err := bolt.Open(cfg.Current.Database.Path, 0666, &bolt.Options{})
+	db, err := open()
 	if err != nil {
 		return nil, err
 	}
