@@ -46,8 +46,8 @@ path = "/home/user/.local/share/deen/deen.db"
 
 [adhan]
 method = 3
-city = "London"
-country = "United Kingdom"
+city = "Dhaka"
+country = "Bangladesh"
 time_format = "24h" # or "12h"
 
 [quran]
