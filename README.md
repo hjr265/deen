@@ -37,16 +37,16 @@ Multiple editions can be configured to show each verse in all editions.
 Deen reads its configuration from `~/.config/deen/config.toml`:
 
 ```toml
-[Database]
-Path = "/home/user/.deendb"
+[database]
+path = "/home/user/.deendb"
 
-[Adhan]
-Method = 3
-City = "London"
-Country = "United Kingdom"
+[adhan]
+method = 3
+city = "London"
+country = "United Kingdom"
 
-[Quran]
-Editions = ["en.asad"]
+[quran]
+editions = ["en.asad"]
 ```
 
 ### Prayer Calculation Methods
