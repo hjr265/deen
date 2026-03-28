@@ -19,6 +19,19 @@ Show the next prayer time:
 Fajr 04:05
 ```
 
+### quran:ayah
+
+Show an ayah (verse) of the Quran:
+
+```
+~ » deen quran:ayah 2:255
+[Al-Baqara 2:255, Saheeh International] Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence...
+```
+
+The reference format is `surah:ayah` (e.g. `2:255` for Ayat al-Kursi). Ranges are also supported (e.g. `2:13-15`).
+
+Multiple editions can be configured to show each verse in all editions.
+
 ## Configuration
 
 Deen reads its configuration from `~/.config/deen/config.toml`:
@@ -31,6 +44,9 @@ Path = "/home/user/.deendb"
 Method = 3
 City = "London"
 Country = "United Kingdom"
+
+[Quran]
+Editions = ["en.asad"]
 ```
 
 ### Prayer Calculation Methods
@@ -52,7 +68,7 @@ Country = "United Kingdom"
 | 13 | Diyanet Isleri Baskanligi, Turkey |
 | 14 | Spiritual Administration of Muslims of Russia |
 
-Prayer times are fetched from the [Aladhan API](https://aladhan.com) and cached locally in a BoltDB database.
+Prayer times are fetched from the [Aladhan API](https://aladhan.com) and cached locally in a BoltDB database. Quran verses are fetched from the [Al Quran Cloud API](https://alquran.cloud/api). Available editions can be found in the API documentation.
 
 ## License
 

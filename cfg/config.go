@@ -17,6 +17,10 @@ type Configuration struct {
 		City    string
 		Country string
 	}
+
+	Quran struct {
+		Editions []string
+	}
 }
 
 func (c *Configuration) SetDefaults() error {
@@ -25,6 +29,7 @@ func (c *Configuration) SetDefaults() error {
 		return err
 	}
 	c.Database.Path = filepath.Join(u.HomeDir, "/.deendb")
+	c.Quran.Editions = []string{"en.asad"}
 	return nil
 }
 
