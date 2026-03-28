@@ -54,7 +54,11 @@ func cmdAdhanNext(cmd *cli.Cmd) {
 		}
 
 		if adhan != nil {
-			fmt.Printf("%s %s\n", adhan.Name, adhan.When.Format("15:04"))
+			tf := "15:04"
+			if cfg.Current.Adhan.TimeFormat == "12h" {
+				tf = "3:04 PM"
+			}
+			fmt.Printf("%s %s\n", adhan.Name, adhan.When.Format(tf))
 		}
 	}
 }

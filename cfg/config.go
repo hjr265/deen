@@ -13,9 +13,10 @@ type Configuration struct {
 	} `toml:"database"`
 
 	Adhan struct {
-		Method  int    `toml:"method"`
-		City    string `toml:"city"`
-		Country string `toml:"country"`
+		Method     int    `toml:"method"`
+		City       string `toml:"city"`
+		Country    string `toml:"country"`
+		TimeFormat string `toml:"time_format"`
 	} `toml:"adhan"`
 
 	Quran struct {
@@ -29,6 +30,7 @@ func (c *Configuration) SetDefaults() error {
 		return err
 	}
 	c.Database.Path = filepath.Join(u.HomeDir, "/.deendb")
+	c.Adhan.TimeFormat = "24h"
 	c.Quran.Editions = []string{"en.asad"}
 	return nil
 }

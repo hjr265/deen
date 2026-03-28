@@ -44,6 +44,7 @@ path = "/home/user/.deendb"
 method = 3
 city = "London"
 country = "United Kingdom"
+time_format = "24h" # or "12h"
 
 [quran]
 editions = ["en.asad"]
