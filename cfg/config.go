@@ -49,5 +49,8 @@ func Load(configPath string) error {
 	}
 
 	_, err := toml.DecodeFile(configPath, &Current)
+	if os.IsNotExist(err) {
+		return nil
+	}
 	return err
 }
