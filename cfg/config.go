@@ -31,7 +31,7 @@ func (c *Configuration) SetDefaults() error {
 	}
 	c.Database.Path = filepath.Join(home, ".local", "share", "deen", "deen.db")
 	c.Adhan.TimeFormat = "24h"
-	c.Quran.Editions = []string{"en.asad"}
+	c.Quran.Editions = []string{"quran-uthmani", "en.sahih"}
 	return nil
 }
 
