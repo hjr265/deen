@@ -9,18 +9,18 @@ import (
 
 type Configuration struct {
 	Database struct {
-		Path string
-	}
+		Path string `toml:"path"`
+	} `toml:"database"`
 
 	Adhan struct {
-		Method  int
-		City    string
-		Country string
-	}
+		Method  int    `toml:"method"`
+		City    string `toml:"city"`
+		Country string `toml:"country"`
+	} `toml:"adhan"`
 
 	Quran struct {
-		Editions []string
-	}
+		Editions []string `toml:"editions"`
+	} `toml:"quran"`
 }
 
 func (c *Configuration) SetDefaults() error {
