@@ -14,6 +14,7 @@ func Next(when time.Time, city, country string, method aladhan.Method) (*model.A
 	if err != nil {
 		return nil, err
 	}
+	defer adhans.Close()
 
 	adhan, err := adhans.GetNext(method, country, city, when)
 	if err != nil {

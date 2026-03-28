@@ -20,6 +20,7 @@ func Ayah(reference string, editions []string) ([]model.Ayah, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer store.Close()
 
 	var result []model.Ayah
 	for _, ref := range refs {

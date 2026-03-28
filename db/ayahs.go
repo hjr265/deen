@@ -14,6 +14,8 @@ type Ayahs struct {
 
 var _ Store = &Ayahs{}
 
+func (s Ayahs) Close() error { return s.db.Close() }
+
 func OpenAyahs() (*Ayahs, error) {
 	db, err := open()
 	if err != nil {

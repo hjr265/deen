@@ -16,6 +16,8 @@ type Adhans struct {
 
 var _ Store = &Adhans{}
 
+func (s Adhans) Close() error { return s.db.Close() }
+
 func OpenAdhans() (*Adhans, error) {
 	db, err := open()
 	if err != nil {
