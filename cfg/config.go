@@ -2,7 +2,6 @@ package cfg
 
 import (
 	"os"
-	"os/user"
 	"path/filepath"
 
 	"github.com/BurntSushi/toml"
@@ -26,11 +25,11 @@ type Configuration struct {
 }
 
 func (c *Configuration) SetDefaults() error {
-	u, err := user.Current()
+	home, err := os.UserHomeDir()
 	if err != nil {
 		return err
 	}
-	c.Database.Path = filepath.Join(u.HomeDir, ".local", "share", "deen", "deen.db")
+	c.Database.Path = filepath.Join(home, ".local", "share", "deen", "deen.db")
 	c.Adhan.TimeFormat = "24h"
 	c.Quran.Editions = []string{"en.asad"}
 	return nil
@@ -42,11 +41,11 @@ func Load(configPath string) error {
 	Current.SetDefaults()
 
 	if configPath == "" {
-		u, err := user.Current()
+		configDir, err := os.UserConfigDir()
 		if err != nil {
 			return err
 		}
-		configPath = filepath.Join(u.HomeDir, ".config", "deen", "config.toml")
+		configPath = filepath.Join(configDir, "deen", "config.toml")
 	}
 
 	_, err := toml.DecodeFile(configPath, &Current)
